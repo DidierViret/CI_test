@@ -7,6 +7,9 @@
  * @copyright   Copyright (c) 2017, Didier Viret
  */
 
+// Language code to add in html tags (and other places)
+$lang['language_code']                    = 'fr';
+
 // Application name
 $lang['app_title']                      = 'CI Test';
 
@@ -24,6 +27,8 @@ $lang['field_username']                 = 'Identifiant';
 $lang['header_picture']                 = 'Photo';
 
 // Buttons
+$lang['btn_login']                      = 'Connexion';
+$lang['btn_logout']                     = 'Déconnexion';
 $lang['btn_admin']                      = 'Administration';
 
 // Messages
