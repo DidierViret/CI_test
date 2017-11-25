@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  sam. 25 nov. 2017 à 17:23
+-- Généré le :  sam. 25 nov. 2017 à 17:27
 -- Version du serveur :  10.1.28-MariaDB
 -- Version de PHP :  7.1.11
 
@@ -21,6 +21,19 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `ci_base`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `ci_sessions`
+--
+
+CREATE TABLE `ci_sessions` (
+  `id` varchar(128) NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `timestamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `data` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -71,6 +84,13 @@ INSERT INTO `t_user_group` (`id`, `name`, `level`, `date_creation`) VALUES
 --
 -- Index pour les tables déchargées
 --
+
+--
+-- Index pour la table `ci_sessions`
+--
+ALTER TABLE `ci_sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `ci_sessions_timestamp` (`timestamp`);
 
 --
 -- Index pour la table `t_user`
