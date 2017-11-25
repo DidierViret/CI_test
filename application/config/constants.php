@@ -3,6 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
+| Application constants
+|--------------------------------------------------------------------------
+|
+| These constants are specific for the application (not included in CI)
+|
+*/
+/* The minimum user level to have access to admin functions */
+define('ADMIN_MINIMUM_LEVEL', 10);
+
+/*
+|--------------------------------------------------------------------------
 | Display Debug backtrace
 |--------------------------------------------------------------------------
 |
