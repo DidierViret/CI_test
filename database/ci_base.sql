@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  sam. 25 nov. 2017 à 17:27
+-- Généré le :  sam. 25 nov. 2017 à 18:24
 -- Version du serveur :  10.1.28-MariaDB
 -- Version de PHP :  7.1.11
 
@@ -38,10 +38,10 @@ CREATE TABLE `ci_sessions` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `t_user`
+-- Structure de la table `user`
 --
 
-CREATE TABLE `t_user` (
+CREATE TABLE `user` (
   `id` int(10) UNSIGNED NOT NULL,
   `fk_user_group` int(10) UNSIGNED NOT NULL,
   `username` varchar(50) NOT NULL,
@@ -49,24 +49,25 @@ CREATE TABLE `t_user` (
   `first_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT '1',
   `date_creation` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `t_user`
+-- Déchargement des données de la table `user`
 --
 
-INSERT INTO `t_user` (`id`, `fk_user_group`, `username`, `password`, `first_name`, `last_name`, `email`, `date_creation`) VALUES
-(1, 1, 'admin', NULL, NULL, 'Administrateur', NULL, '2017-11-25'),
-(2, 2, 'user', NULL, NULL, 'Utilisateur', NULL, '2017-11-25');
+INSERT INTO `user` (`id`, `fk_user_group`, `username`, `password`, `first_name`, `last_name`, `email`, `is_active`, `date_creation`) VALUES
+(1, 1, 'admin', NULL, NULL, 'Administrateur', NULL, 1, '2017-11-25'),
+(2, 2, 'user', NULL, NULL, 'Utilisateur', NULL, 1, '2017-11-25');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `t_user_group`
+-- Structure de la table `user_group`
 --
 
-CREATE TABLE `t_user_group` (
+CREATE TABLE `user_group` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(50) NOT NULL,
   `level` int(10) UNSIGNED NOT NULL,
@@ -74,10 +75,10 @@ CREATE TABLE `t_user_group` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `t_user_group`
+-- Déchargement des données de la table `user_group`
 --
 
-INSERT INTO `t_user_group` (`id`, `name`, `level`, `date_creation`) VALUES
+INSERT INTO `user_group` (`id`, `name`, `level`, `date_creation`) VALUES
 (1, 'Administrateur', 10, '2017-11-25'),
 (2, 'Utilisateur', 1, '2017-11-25');
 
@@ -93,16 +94,16 @@ ALTER TABLE `ci_sessions`
   ADD KEY `ci_sessions_timestamp` (`timestamp`);
 
 --
--- Index pour la table `t_user`
+-- Index pour la table `user`
 --
-ALTER TABLE `t_user`
+ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_user_group` (`fk_user_group`);
 
 --
--- Index pour la table `t_user_group`
+-- Index pour la table `user_group`
 --
-ALTER TABLE `t_user_group`
+ALTER TABLE `user_group`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -110,15 +111,15 @@ ALTER TABLE `t_user_group`
 --
 
 --
--- AUTO_INCREMENT pour la table `t_user`
+-- AUTO_INCREMENT pour la table `user`
 --
-ALTER TABLE `t_user`
+ALTER TABLE `user`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT pour la table `t_user_group`
+-- AUTO_INCREMENT pour la table `user_group`
 --
-ALTER TABLE `t_user_group`
+ALTER TABLE `user_group`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
@@ -126,10 +127,10 @@ ALTER TABLE `t_user_group`
 --
 
 --
--- Contraintes pour la table `t_user`
+-- Contraintes pour la table `user`
 --
-ALTER TABLE `t_user`
-  ADD CONSTRAINT `fk_user_group` FOREIGN KEY (`fk_user_group`) REFERENCES `t_user_group` (`id`);
+ALTER TABLE `user`
+  ADD CONSTRAINT `fk_user_group` FOREIGN KEY (`fk_user_group`) REFERENCES `user_group` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -15,7 +15,7 @@
                 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
 
                     /* Admin part, for admins only */
-                    if ($_SESSION['user_access'] >= ADMIN_MINIMUM_LEVEL) { ?>
+                    if ($_SESSION['access_level'] >= ADMIN_MINIMUM_LEVEL) { ?>
                         <li><a class="btn-warning" href="<?php echo base_url("admin/"); ?>" ><?php echo $this->lang->line('btn_admin'); ?></a></li>
                     <?php
                     /* End of the admin-only part */ } ?>

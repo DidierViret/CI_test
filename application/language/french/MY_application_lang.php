@@ -15,6 +15,7 @@ $lang['app_title']                      = 'CI Test';
 
 // Page titles
 $lang['page_prefix']                    = 'CI Test';
+$lang['page_login']                     = 'Connexion';
 
 // Date and time formats
 $lang['date_format_short']              = 'd.m.Y';
@@ -22,20 +23,19 @@ $lang['datetime_format_short']          = 'd.m.Y H:i';
 
 // Fields labels
 $lang['field_username']                 = 'Identifiant';
+$lang['field_password']                 = 'Mot de passe';
 
 // List headers
 $lang['header_picture']                 = 'Photo';
 
 // Buttons
+$lang['btn_cancel']                     = 'Annuler';
 $lang['btn_login']                      = 'Connexion';
 $lang['btn_logout']                     = 'Déconnexion';
 $lang['btn_admin']                      = 'Administration';
 
 // Messages
-$lang['msg_no_item']                    = 'Aucun objet à afficher';
-
-// Bootstrap labels
-$lang['lbl_loan_status_loaned']         = 'En prêt';
+$lang['msg_err_invalid_password']       = 'Ces informations de connexion ne sont pas valides.';
 
 // Other texts
 $lang['text_login']                     = 'Connexion';

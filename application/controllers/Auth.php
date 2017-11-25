@@ -19,13 +19,10 @@ class Auth extends MY_Controller
     {
         parent::__construct();
 
-        /*
         $this->load->model('user_model');
-        $this->load->model('user_type_model');
+        $this->load->model('user_group_model');
         $this->load->library('form_validation');
-        */
     }
-
 
 
     /**
@@ -33,28 +30,28 @@ class Auth extends MY_Controller
      */
     public function login()
     {
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
-
+        // Validation rules
+        $this->form_validation->set_rules('username', $this->lang->line('field_username'), 'required');
 
         if ($this->form_validation->run() == true) {
             // Fields validation passed
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
 
             if ($this->user_model->check_password($username, $password)) {
                 // Login success
-
-                $user = $this->user_model->with('user_type')
+                $user = $this->user_model->with('user_group')
                                          ->get_by('username', $username);
 
                 // Set session variables
-                $_SESSION['user_id'] = (int)$user->user_id;
+                $_SESSION['user_id'] = (int)$user->id;
                 $_SESSION['username'] = (string)$user->username;
-                $_SESSION['user_access'] = (int)$user->user_type->access_level;
+                $_SESSION['access_level'] = (int)$user->user_group->level;
                 $_SESSION['logged_in'] = (bool)true;
 
                 // Set message and redirect
                 $this->session->set_flashdata('message', 'user login ok');
-                redirect('item');
+                redirect('/');
 
             } else {
                 // Login failed
@@ -64,7 +61,8 @@ class Auth extends MY_Controller
         }
 
         // Display login page
-        $this->display_view('login_view');
+        $outputs['title'] = $this->lang->line('page_login');
+        $this->display_view('auth/login', $outputs);
     }
 
 
