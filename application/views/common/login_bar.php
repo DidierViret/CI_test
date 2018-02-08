@@ -11,7 +11,6 @@
         <div class="col-lg-6 col-sm-6">
             <ul class="nav nav-pills pull-right" style="margin-top:20px">
                 <?php
-                /*var_dump($_SESSION);*/
                 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
 
                     /* Admin part, for admins only */
@@ -24,6 +23,9 @@
                 <?php } else { ?>
                     <li><a class="btn-primary" href="<?php echo base_url("auth/login"); ?>" ><?php echo $this->lang->line('btn_login'); ?></a></li>
                 <?php } ?>
+
+                <!-- Test of Bootstrap Multiselect plugin -->
+                <li><a class="btn-primary" href="<?php echo base_url("multiselect/"); ?>" ><?php echo $this->lang->line('btn_multiselect'); ?></a></li>
             </ul>
         </div>
     </div>

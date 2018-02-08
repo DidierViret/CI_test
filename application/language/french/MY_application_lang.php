@@ -33,6 +33,7 @@ $lang['btn_cancel']                     = 'Annuler';
 $lang['btn_login']                      = 'Connexion';
 $lang['btn_logout']                     = 'Déconnexion';
 $lang['btn_admin']                      = 'Administration';
+$lang['btn_multiselect']                = 'Multiselect';
 
 // Messages
 $lang['msg_err_invalid_password']       = 'Ces informations de connexion ne sont pas valides.';
