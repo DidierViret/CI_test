@@ -10,7 +10,12 @@ class Multiselect extends MY_Controller
 {
     /* MY_Controller variables definition */
     protected $access_level = "*";
-
+    private $items = [ '1' => 'cheese',
+               '2' => 'tomatoes',
+               '3' => 'mozarella',
+               '4' => 'mushrooms',
+               '5' => 'pepperoni',
+               '6' => 'onions'];
 
     /**
     * Constructor
@@ -25,6 +30,20 @@ class Multiselect extends MY_Controller
      */
     public function index()
     {
-		$this->display_view('multiselect/test');
+        $outputs['items'] = $this->items;
+        $outputs['selection'] = '';
+
+		$this->display_view('multiselect/test', $outputs);
 	}
+
+    /**
+     * Display view for test of Bootstrap Multiselect
+     */
+    public function submit()
+    {
+        $outputs['items'] = $this->items;
+        $outputs['selection'] = $this->input->post('multiselect');
+
+        $this->display_view('multiselect/test', $outputs);
+    }
 }
